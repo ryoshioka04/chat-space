@@ -26,13 +26,16 @@
           Hello World!!
 
     .chat-side__form
-      .chat-side__form__new-message
-        .chat-side__form__new-message__text
-          type a message
-          .chat-side__form__new-message__image
-          -# %label.upload-label{for: "upload-icon"}
-          -# %i.fa.fa-picture-o
-          
-        .chat-side__form__new-message__send
-          .chat-side__form__new-message__send-btn
-            send
+      = form_for [@group, @message] do |f|
+        .chat-side__form__message
+          .chat-side__form__message__input
+            = f.text_field :content, class: 'message-text', placeholder: 'type a message' 
+            .chat-side__form__message__image
+              = f.label :image, class: 'image-icon' do
+                = fa_icon 'picture-o', class: 'icon'
+                = f.file_field :image, class: 'hidden'
+            
+          .chat-side__form__message__send
+            = f.submit 'Send', class: 'send-btn'
+
+
