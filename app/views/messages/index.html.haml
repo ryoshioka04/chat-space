@@ -6,25 +6,20 @@
     .chat-side__header
       .chat-side__header__group
         .chat-side__header__group__name
-          test太郎
+          = @group.name
         .chat-side__header__group__member
           Member :
           .chat-side__header__group__member-user
-            test太郎
+            -# = @group.users
   
       .chat-side__header__edit__box
         .chat-side__header__edit__box-btn
           Edit
 
     .chat-side__body
-      .chat-side__body__message
-        .chat-side__body__message-user
-          test太郎
-        .chat-side__body__message-daytime
-          2019/09/01(sun) 16:07:23
-        .chat-side__body__message-text
-          Hello World!!
 
+      = render @messages
+      
     .chat-side__form
       = form_for [@group, @message] do |f|
         .chat-side__form__message
