@@ -1,0 +1,9 @@
+.chat-side__body__message
+  .chat-side__body__message-user
+    = message.user.name
+  .chat-side__body__message-daytime
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .chat-side__body__message-text
+    - if message.content.present?
+      = message.content
+    = image_tag message.image.url, class: 'message-image' if message.image.present?

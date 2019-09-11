@@ -1,59 +1,36 @@
-.header
-  -# グループを作成しました
+.wrapper
 
-.bar-side
-  .bar-side__header
-    .bar-side__header__box
-      .bar-side__header__box__user-name
-        test太郎
-      .bar-side__header__box__menu
-        .bar-side__header__box__menu__new-group
-        =link_to ""
-        = fa_icon 'edit'
-        .bar-side__header__box__menu__edit-user
-        =link_to ""
-        = fa_icon 'cog'
+  = render 'groups/side_bar'
 
-  .bar-side__body
-    .bar-side__body__groups
-      .bar-side__body__groups-name
-        サンプル
-      .bar-side__body__groups-text
-        よろしくお願いします
-
-.chat-side
-  .chat-side__header
-    .chat-side__header__group
-      .chat-side__header__group__name
-        test太郎
-      .chat-side__header__group__member
-        Member : 
-        .chat-side__header__group__member-user
-          test太郎
- 
-    .chat-side__header__edit__box
-      .chat-side__header__edit__box-btn
-        Edit
-
-  .chat-side__body
-    .chat-side__body__message
-      .chat-side__body__message-user
-        test太郎
-      .chat-side__body__message-daytime
-        2019/09/01(sun) 16:07:23
-      .chat-side__body__message-text
-        Hello World!!
-
+  .chat-side
+    .chat-side__header
+      .chat-side__header__group
+        .chat-side__header__group__name
+          = @group.name
+        .chat-side__header__group__member
+          Member :
+          .chat-side__header__group__member-user
+            -# = @group.users
   
-  .chat-side__form
-    .chat-side__form__new-message
-      .chat-side__form__new-message__text
-        type a message
-        .chat-side__form__new-message__image
-        %label.upload-label{for: "upload-icon"}
-        %i.fa.fa-picture-o
-        
-      .chat-side__form__new-message__send
-        .chat-side__form__new-message__send-btn
-          send
+      .chat-side__header__edit__box
+        .chat-side__header__edit__box-btn
+          Edit
+
+    .chat-side__body
+
+      = render @messages
+      
+    .chat-side__form
+      = form_for [@group, @message] do |f|
+        .chat-side__form__message
+          .chat-side__form__message__input
+            = f.text_field :content, class: 'message-text', placeholder: 'type a message' 
+            .chat-side__form__message__image
+              = f.label :image, class: 'image-icon' do
+                = fa_icon 'picture-o', class: 'icon'
+                = f.file_field :image, class: 'hidden'
+            
+          .chat-side__form__message__send
+            = f.submit 'Send', class: 'send-btn'
+
 
