@@ -49,7 +49,7 @@ $(function() {
       var html = buildMessage(message);
       $('.chat-side__body').append(html);
       $('.chat-side__body').animate({scrollTop: $('.chat-side__body')[0].scrollHeight}, 'fast');
-      $('#message_content').val('');
+      $('#message_content')[0].reset();
     })
     .fail(function(){
       alert('error');
