@@ -1,36 +1,24 @@
 $(function() {
 
   function buildMessage(message) {
-    if ( message.image ) {
-      var html =
-        `<div class="chat-side__body__message">
-           <div class="chat-side__body__message-user">
-             ${message.user_name}
-           </div>
-           <div class="chat-side__body__message-daytime">
-             ${message.date}
-           </div>
-           <div class="chat-side__body__message-text">
-             ${message.content}
-           </div>
+
+    var content = message.content ? `${message.content}` : '';
+    var image = message.image ? `<img src=${message.image}>` : '';
+
+    var html =
+      `<div class="chat-side__body__message">
+         <div class="chat-side__body__message-user">
+           ${message.user_name}
          </div>
-         <img src=${message.image} >`
-      return html;
-    } else {
-      var html =
-        `<div class="chat-side__body__message">
-           <div class="chat-side__body__message-user">
-             ${message.user_name}
-           </div>
-           <div class="chat-side__body__message-daytime">
-             ${message.date}
-           </div>
-           <div class="chat-side__body__message-text">
-             ${message.content}
-           </div>
-         </div>`
-      return html;
-    };
+         <div class="chat-side__body__message-daytime">
+           ${message.date}
+         </div>
+         <div class="chat-side__body__message-text">
+           ${content}
+         </div>
+           ${image}
+       </div>`
+    return html;
   }
 
   $('#new_message').on('submit', function(e) {
@@ -52,8 +40,8 @@ $(function() {
       $('#message_content')[0].reset();
     })
     .fail(function(){
-      alert('error');
-    })
+      alert('エラーが発生したためメッセージは送信できませんでした。');
+    });
     return false;
   });
 });
