@@ -1,6 +1,6 @@
 .side-bar
   .header
-    %h3.header__name
+    %h3.header__name{ data: { current_user_id: "#{current_user.id}" } }
       = current_user.name
     %ul.header__lists
       %li.list
@@ -11,7 +11,7 @@
           = fa_icon 'cog', class: 'icon'
   .groups
     - current_user.groups.each do |group|
-      .group
+      .group{ data: { group_id: "#{group.id}" } }
         = link_to group_messages_path(group) do
           .group__name
             = group.name
