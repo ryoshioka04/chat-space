@@ -53,8 +53,8 @@ $(function() {
 
   $('body').on("click", ".chat-group-user__btn--add", function() {
     var add_chat_member_element = $(".js-chat-member").parent();
-    var user_id = $(this).attr("data-user-id");
-    var user_name = $(this).attr("data-user-name");
+    var user_id = $(this).data("user-id");
+    var user_name = $(this).data("user-name");
     var html = 
       `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
          <input name='group[user_ids][]' type='hidden' value='${ user_id }'>
