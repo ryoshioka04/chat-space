@@ -9,13 +9,13 @@
           = @group.name
         .chat-side__header__group__member
           Member :
-          .chat-side__header__group__member-user
-            = @group.users.name
-
+          - @group.users.each do |user|
+            .chat-side__header__group__member-user
+              #{user.name}
       .chat-side__header__edit__box
-        .chat-side__header__edit__box-btn
-          -# = link_to edit_group_path do
-          EDIT
+        = link_to edit_group_path(@group) do
+          .chat-side__header__edit__box-btn
+            EDIT
 
     .chat-side__body
 
@@ -33,5 +33,3 @@
             
           .chat-side__form__message__send
             = f.submit 'Send', class: 'send-btn'
-
-
