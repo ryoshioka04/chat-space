@@ -21,7 +21,7 @@ $(function() {
 
     search_result.append(html);
   }
-
+  // ユーザーインクリメンタルサーチ
   text_field.on("keyup", function() {
 
     var input = text_field.val();
@@ -50,7 +50,7 @@ $(function() {
       alert('ユーザー検索に失敗しました');
     })
   });
-
+// 追加済みチャットメンバー
   $('body').on("click", ".chat-group-user__btn--add", function() {
     var add_chat_member_element = $(".js-chat-member").parent();
     var user_id = $(this).data("user-id");

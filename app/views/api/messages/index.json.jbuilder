@@ -1,7 +1,7 @@
 json.array! @messages do |message|
   json.content     message.content
-  json.image       message.image_url
-  json.date        message.created_at.to_s
   json.user_name   message.user.name
-  json.id          mいessage.id
+  json.date        message.created_at.to_s(:datetime)
+  json.id          message.id
+  json.image       message.image_url
 end

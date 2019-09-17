@@ -33,12 +33,13 @@ $(function() {
       processData: false, 
       contentType: false
     })
-    .done(function(message){
+    .done(function(message){      
       var html = buildMessage(message);
       $('.chat-side__body').append(html);
       $('.chat-side__body').animate({scrollTop: $('.chat-side__body')[0].scrollHeight}, 'fast');
       $('#new_message')[0].reset();
     })
+
     .fail(function(){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     });
@@ -47,27 +48,27 @@ $(function() {
   // 自動更新
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $('.chat-side__body__message').last().data('id');
+      var last_message_id = $('.chat-side__body__message:last').data('id');
       var href = 'api/messages'
       $.ajax({
         url: href,
         type: 'GET',
         dataType: 'json',
-        data: {id: last_message_id}
+        data: { id: last_message_id }
       })
       .done(function(messages) {
         var insertHTML = '';
         messages.forEach(function(message) {
           insertHTML = buildMessage(message);
           $('.chat-side__body').append(insertHTML);
+          $('.chat-side__body').animate({scrollTop: $('.chat-side__body')[0].scrollHeight});
         });
-
-        $('.chat-side__body').animate({scrollTop: $('.chat-side__body')[0].scrollHeight}, 'fast');
       })
+
       .fail(function() {
         alert('自動更新に失敗しました');
       });
-    }
+    };
   };
   setInterval(reloadMessages, 5000);
 });
