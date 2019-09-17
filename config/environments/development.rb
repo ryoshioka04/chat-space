@@ -54,4 +54,3 @@ Rails.application.configure do
 
 end
 
-require 'mysql_retry_lost_connection'
