@@ -52,5 +52,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  require 'mysql_retry_lost_connection'
 end
+
+require 'mysql_retry_lost_connection'
