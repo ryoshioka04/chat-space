@@ -1,4 +1,4 @@
-json.array! @messages do |message|
+json.array! @message do |message|
   json.content     message.content
   json.user_name   message.user.name
   json.date        message.created_at.to_s(:datetime)
