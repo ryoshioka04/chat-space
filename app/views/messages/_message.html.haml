@@ -1,8 +1,8 @@
-.chat-side__body__message{ "data-id": "#{message.id}" }
+.chat-side__body__message{ data: {id: message.id }}
   .chat-side__body__message-user
     = message.user.name
   .chat-side__body__message-daytime
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
+    = message.created_at
   .chat-side__body__message-text
     - if message.content.present?
       = message.content

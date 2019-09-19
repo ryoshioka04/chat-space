@@ -1,6 +1,5 @@
 $(function() {
   
-  var pre_input = "";
   var search_result = $(".user-search-result");
 
 // 検索したユーザーのHTMLを組み立て
